@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javasript - Recoger datos de una API</title>
+
+    <!-- 
+             Documentacion inicial: https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data-es
+
+             JAVASCRIPT
+             - Conexion con API, con fecht y promesas
+             - Creacion de nodos en el DOM
+
+
+          Hacemos un fecht con put, para modificar un elemento existente. Los métodos PUT y PATCH se 
+          utilizan para modificar un recurso. La diferencia entre ambos es que el método PUT impacta sobre 
+          la totalidad de los atributos del recurso y el método PATCH lo hace sobre uno o varios de esos atributos.
+
+             -  new FormData(NOMBRE OBJETO FORMULARIO);
+                Informacion: https://es.javascript.info/formdata
+
+
+
+
+
+     -->
+  </head>
+  <body>
+    <div class="contenedor">
+   
+<section>
+    <h1>Peliculas</h1>
+    <ul id="movies"></ul>
+   </section>
+   
+  
+  
+  <section>
+<ul id="formacion"></ul>
+
+
+
+
+  </section>
+  <section>
+<p>Se actualizan con datos fijos</p>
+<p>id: 3,
+    name: "Suomi",
+    surname: "Taramundi",
+    email: "taramundi@gmail.com"
+</p>
+<button onclick="update()">Actualizar</button>
+
+  </section>
+
+  </div>  
+  <script>
+
+// PUT to the resource with id = 5 to change the name of task
+ function update() {       
+// PUT to the resource with id = 5 to change the name of task
+//http://localhost:5000/teachers
+fetch('http://localhost:10000/teachers/3', {
+method: 'PUT',
+body: JSON.stringify({
+
+id: 3,
+name: "Suomi",
+surname: "Taramundi",
+email: "taramundi@gmail.com"
+}),
+headers: {
+"Content-type": "application/json; charset=UTF-8"
+}
+})
+.then(response => response.json())
+.then(json => console.log(json))
+
+}
+
+  </script>
+<script>
+const url3='http://localhost:5050/teachers';
+
+
+fetch(url3)
+
+
+.then((resp) => resp.json()) 
+
+ 
+.then(function(data) {
+
+    console.log(data)
+   
+  return data.map(function(valor) {
+
+           //alert(valor.nombre);
+
+          const listas=document.getElementById("formacion");
+          const lista=document.createElement("li");
+          let nombre=document.createTextNode(valor.name);
+          lista.appendChild(nombre);
+          listas.appendChild(lista);
+  
+  })
+
+
+})
+.catch(function(error) {
+  console.log(error);
+});
+
+
+
+</script>
+  </body>
+</html>

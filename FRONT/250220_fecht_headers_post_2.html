@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javasript - Recoger datos de una API</title>
+
+    <!-- 
+             Documentacion inicial: https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data-es
+
+             JAVASCRIPT
+             - Conexion con API, con fecht y promesas
+             - Creacion de nodos en el DOM
+
+
+          Hacemos un fecht con post, pero los datos van a ir ligados a un formulario cuyos valores 
+          vamos a capturar por unos metodos especificos
+             EJEMPLO MODELO ENVIO DE POST
+            - Recoje los datos por GET
+            - Envia los datos fijos por POST 
+            - La insercion se coloca via formulario utilizando
+               new FormData(Creando OBJETO FORMULARIO);
+              Informacion: https://es.javascript.info/formdata
+
+
+
+
+             -  
+                
+
+
+
+
+
+     -->
+  </head>
+  <body>
+    <div class="contenedor">
+   
+<section>
+    <h1>Peliculas</h1>
+    <ul id="movies"></ul>
+   </section>
+   
+  
+   <section>
+    <form action="" id="formulario">
+        
+      <input type="text" name="id" value="17">
+<br>
+      <input type="text" name="nombre" value="Poltergeist">
+      <br>
+      <input type="text" name="director" value="Tobe Hooper">
+      <br>
+      <input type="text" name="clasificacion" value="Terror">
+      <br>
+      <button type="submit">Insertar</button>
+  </form>
+
+
+  </section>
+
+  </div>
+    <script>
+
+
+const url="http://localhost:8000/peliculas"
+
+
+fetch(url)
+
+
+.then((resp) => resp.json()) 
+
+ 
+.then(function(data) {
+
+    console.log(data)
+   
+  return data.map(function(valor) {
+
+           //alert(valor.nombre);
+
+           const listas=document.getElementById("movies");
+           const lista=document.createElement("li");
+                   let nombre=document.createTextNode(valor.nombre);
+          lista.appendChild(nombre);
+          listas.appendChild(lista);
+  
+  })
+
+
+})
+.catch(function(error) {
+  console.log(error);
+});
+
+    </script>
+    <script>
+    
+const formulario=document.getElementById("formulario");
+
+
+   formulario.addEventListener("submit", insertar);
+          
+function insertar(){    
+    event.preventDefault();
+
+   // Forma Antigua/Anterior
+   const formData = new FormData(formulario);
+   const datos= Object.fromEntries(formData);
+
+ //  const datos = new FormData(formulario);
+
+    alert(JSON.stringify(datos));
+
+const options = {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify(datos),
+};
+
+
+let url2="http://localhost:8000/peliculas";
+
+    
+    fetch(url2, options).then(response => response.json()).then(json => console.log(json));
+
+}
+
+    </script>
+
+  </body>
+</html>

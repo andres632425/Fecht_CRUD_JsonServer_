@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javasript - Recoger datos de una API</title>
+
+    <!-- 
+             Documentacion inicial: https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data-es
+
+             JAVASCRIPT
+             - Conexion con API, con fecht y promesas
+             - Creacion de nodos en el DOM
+
+
+          Hacemos un fecht con post, pero los datos van a ir ligados a un formulario cuyos valores 
+          vamos a capturar por unos metodos especificos
+
+             -  new FormData(NOMBRE OBJETO FORMULARIO);
+                Informacion: https://es.javascript.info/formdata
+
+
+
+
+
+     -->
+  </head>
+  <body>
+    <div class="contenedor">
+   
+<section>
+    <h1>Peliculas</h1>
+    <ul id="movies"></ul>
+   </section>
+   
+  
+   <section>
+    <!--   
+    <form action="" id="formulario">
+        
+      <input type="text" name="id" value="17">
+<br>
+      <input type="text" name="name" value="Peter">
+      <br>
+      <input type="text" name="surname" value="Jones">
+      <br>
+      <input type="text" name="email" value="peter_jones@gmail.com">
+      <br>
+      <button type="submit">Insertar</button>
+     
+  </form>
+-->
+  </section>
+  <section>
+<p>Se borran los datos de el registro con id:3</p>
+<p>
+  "id": 2,
+  "name": "Andrea",
+  "surname": "Mininni",
+  "email": "andrea@aulab.it"
+
+</p>
+<button onclick="borrar()">Delete</button>
+
+  </section>
+
+  </div>  
+  <script>
+
+
+ function borrar() {       
+
+fetch('http://localhost:10000/teachers/2', {
+method: 'DELETE',
+/*body: JSON.stringify({
+
+id: 3,
+name: "Suomi",
+surname: "Taramundi",
+email: "taramundi@gmail.com"
+}),
+*/
+headers: {
+"Content-type": "application/json; charset=UTF-8"
+}
+})
+.then(response => response.json())
+.then(json => console.log(json))
+
+}
+
+  </script>
+
+  </body>
+</html>

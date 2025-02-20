@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!--   Se utilizan los conceptos de la clase Form Data, para capturar los valores de un formulario en un objeto
+    javascript que posteriormente se pueda pueda "pintar" en una vista de usuario o utilizar de otro modo
+    
+      La interfaz FormData proporciona una manera sencilla de construir un conjunto de parejas clave/valor que representan 
+      los campos de un formulario y sus valores, que pueden ser enviados fácilmente con métodos que conecten con una API (en-US). 
+      Utiliza el mismo formato que usaría un formulario si el tipo de codificación fuera "multipart/form-data".
+
+      Se muestran tres modelos de codigo para hacer el mismo trabajo de recogida de datos con esta
+      tecnica
+      
+      Recursos de informacion
+      - https://es.javascript.info/formdata
+
+      
+
+
+
+-->
+
+
+</head>
+<body>
+
+   <h2>Peliculas</h2>
+    <section id="uno">
+        <form action="" id="formulario">
+            
+          <input type="text" name="id" value="1" placeholder="Un id">
+    <br>
+          <input type="text" name="nombre" value="Blade Runner"  placeholder="Un nombre">
+          <br>
+          <input type="text" name="director" value="Ridley Scott"  placeholder="Un director">
+          <br>
+          <input type="text" name="clasificacion" value="Ciencia Ficcion"  placeholder="Una clasificacion">
+          <br>
+          <button type="submit">Insertar</button>
+      </form>
+    
+    
+      </section>
+      <section id="dos">
+
+
+
+
+
+      </section>
+ 
+    <script>
+        
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', (e) => {               // El evento submit envia el formulario
+         e.preventDefault()
+       
+         const formData = new FormData(form)
+         const objetoJavascript=Object.fromEntries(formData);  // La clase FormData, crea una instancia a partir el objeto formulari
+         const objetoJson = JSON.stringify(objetoJavascript);  // A traves del metodo formEntries que tiene como parametro la instancia 
+                                                               // anterior se crea un objeto javascript que recoje Claves (name) y valores (value)
+
+         alert(objetoJson);
+         console.log(objetoJson)
+})
+
+
+    </script>
+
+</body>
+</html>

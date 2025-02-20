@@ -1,0 +1,103 @@
+
+INSTALACION DE JSON SERVER
+
+npm init -y
+
+npm i json-server
+
+CREAR UN FILE DE JSON CON DATOS    archivos.json
+
+json-server --watch archivos.json --port 8000
+
+npm run dev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+added 45 packages, and audited 46 packages in 1s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+penascalf5@penascalf5-Lenovo-V15-G2-ITL:~/Documentos/Visual Studio Code/1_proyecto_fullStack/back_3$ npm run dev
+
+> back_3@1.0.0 dev
+> json-server --watch db.json --port 8000
+
+--watch/-w can be omitted, JSON Server 1+ watches for file changes by default
+File db.json not found
+penascalf5@penascalf5-Lenovo-V15-G2-ITL:~/Documentos/Visual Studio Code/1_proyecto_fullStack/back_3$ npm run dev
+
+> back_3@1.0.0 dev
+> json-server --watch db.json --port 8000
+
+--watch/-w can be omitted, JSON Server 1+ watches for file changes by default
+File db.json not found
+penascalf5@penascalf5-Lenovo-V15-G2-ITL:~/Documentos/Visual Studio Code/1_proyecto_fullStack/back_3$ npm run dev
+
+> back_3@1.0.0 dev
+> json-server --watch archivos.json --port 8000
+
+--watch/-w can be omitted, JSON Server 1+ watches for file changes by default
+JSON Server started on PORT :8000
+Press CTRL-C to stop
+Watching archivos.json...
+
+♡( ◡‿◡ )
+
+Index:
+http://localhost:8000/
+
+Static files:
+Serving ./public directory if it exists
+
+Endpoints:
+http://localhost:8000/peliculas
+http://localhost:8000/clasificaciones
+^C
+penascalf5@penascalf5-Lenovo-V15-G2-ITL:~/Documentos/Visual Studio Code/1_proyecto_fullStack/back_3$ 

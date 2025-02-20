@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javasript - Recoger datos de una API con GET</title>
+
+    <!-- 
+             Documentacion inicial: https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data-es
+
+             JAVASCRIPT
+             - Conexion con API, con fecht y promesas
+             - Creacion de nodos en el DOM
+
+            JSON-SERVER
+            - Se utiliza un carpeta Servidor, con un archivo json: movies.json
+
+
+
+
+     -->
+  </head>
+  <body>
+    <h1>Peliculas </h1>
+    <select name="" id="listaPeliculas">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+
+    </select>
+    <ul id="movies"></ul>
+    
+
+    <script>
+     const listaPeliculas=document.getElementById("listaPeliculas");
+     const listas=document.getElementById("movies");
+    
+     listaPeliculas.addEventListener("change", peticionDatos);
+
+     function peticionDatos() {  
+        
+listas.innerHTML="";
+    let idSeleccionado=listaPeliculas.value;
+
+
+const url="http://localhost:8000/peliculas?id="+idSeleccionado;
+
+
+fetch(url)
+/*  la respuesta que se obtiene no es JSON, sino un objeto con una serie de métodos que pueden 
+usarse dependiendo de lo que se quiera hacer con la información. Para convertir el objeto devuelto en JSON, utilice el método json().
+Añada el método then() que contendrá una función con un parámetro llamado resp: 
+El parámetro resp toma el valor del objeto devuelto de fetch(url). Utilice el método json() para convertir resp en datos JSON:*/
+.then((resp) => resp.json()) 
+
+
+
+/* Aún se deben procesar los datos JSON. Añada otra instrucción then() con una función que tiene un argumento llamado data (arbitrario):
+Dentro de esta función, cree una variable llamada authors que se establece igual a data.results:
+
+Para cada valor en data, le convendrá crear un elemento de lista que muestre datos de ellos y muestre su nombre. El método map() funciona muy bien para esto: */
+.then(function(data) {
+
+    console.log(data)
+    //let dato = data.peliculas;
+/*Para cada autor en authors, le convendrá crear un elemento de lista que muestre una imagen de ellos y muestre su nombre. El método map() funciona muy bien para esto: */
+  return data.map(function(valor) {
+
+          // alert(valor.nombre);
+
+        
+           const lista=document.createElement("li");
+                   let nombre=document.createTextNode(valor.nombre);
+          lista.appendChild(nombre);
+          listas.appendChild(lista);
+  
+  })
+
+
+})
+.catch(function(error) {
+  console.log(error);
+});
+
+
+
+}
+    </script>
+    <script>
+
+      
+    </script>
+  </body>
+</html>
