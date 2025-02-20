@@ -1,0 +1,16 @@
+{
+  "teachers": [
+    {
+      "id": "1",
+      "name": "Marco",
+      "surname": "Insabato",
+      "email": "marco@aulab.it"
+    },
+    {
+      "id": "3",
+      "name": "Suomi",
+      "surname": "Taramundi",
+      "email": "taramundi@gmail.com"
+    }
+  ]
+}
